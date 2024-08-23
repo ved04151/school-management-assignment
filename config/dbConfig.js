@@ -1,11 +1,12 @@
 const mysql = require('mysql2');
+require("dotenv").config();
 
 // Database and connection configuration
 const databaseName = 'school_management';
 const connectionConfig = {
     host: 'localhost',
     user: 'root',
-    password: 'Ved@254'
+    password: process.env.PASSWORD,
 };
 
 // Create a MySQL connection (without specifying a database)
@@ -79,8 +80,13 @@ setupDatabase();
 const db = mysql.createPool({
     host: 'localhost', // Change this to your DB host
     user: 'root',      // Change this to your DB user
-    password: 'Ved@254',      // Change this to your DB password
+    password: process.env.PASSWORD,      // Change this to your DB password
     database: 'school_management'
+});
+
+module.exports = db;
+
+
 });
 
 module.exports = db;
